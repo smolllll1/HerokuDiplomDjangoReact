@@ -1,4 +1,5 @@
 from django.test import TestCase
+<<<<<<< HEAD
 from rest_framework.test import APIClient, APITestCase
 from django.contrib.auth.models import User
 from django.urls import reverse
@@ -112,3 +113,7 @@ class Login_Test(APITestCase):
         response = self.client.get(url)
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+=======
+
+# Create your tests here.
+>>>>>>> f393bfd59599422952d99ac5209358fb674fd1f3

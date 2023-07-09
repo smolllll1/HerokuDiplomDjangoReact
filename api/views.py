@@ -21,10 +21,13 @@ from .serializers import RegisterSerializer, LoginSerializer, PeopleSerializer, 
 @authentication_classes([BasicAuthentication])
 @api_view(['POST', 'GET'])
 def add_movies_in_account(request: Request, pk):
+<<<<<<< HEAD
     '''
     function adds "id_movie" objects to the current user. 
     I use the POST method to record an object and the GET method to get a list of objects
     '''
+=======
+>>>>>>> f393bfd59599422952d99ac5209358fb674fd1f3
     if request.method == 'POST':
         user = User.objects.get(username=pk)
         name = user.username
@@ -58,7 +61,10 @@ class DataPagination(PageNumberPagination):
     page_size_query_param = 'page_size'
     max_page_size = 100
 
+<<<<<<< HEAD
     #Add paginated response
+=======
+>>>>>>> f393bfd59599422952d99ac5209358fb674fd1f3
     def get_paginated_response(self, data):
         response = super().get_paginated_response(data)
         response.data['total_pages'] = self.page.paginator.num_pages
@@ -70,13 +76,19 @@ class SearchPagination(PageNumberPagination):
     page_size_query_param = 'page_size'
     max_page_size = 1
 
+<<<<<<< HEAD
 #returns the image for the query people
+=======
+>>>>>>> f393bfd59599422952d99ac5209358fb674fd1f3
 class ImagePeopleViewSet(viewsets.ModelViewSet):
     queryset = People.objects.all()
     serializer_class = PeopleSerializer
     pagination_class = SearchPagination 
 
+<<<<<<< HEAD
 #returns the image for the query movies
+=======
+>>>>>>> f393bfd59599422952d99ac5209358fb674fd1f3
 class ImageMoviesViewSet(viewsets.ModelViewSet):
     queryset = Movies.objects.all()
     serializer_class = MovieSerializer
@@ -84,9 +96,12 @@ class ImageMoviesViewSet(viewsets.ModelViewSet):
 
 #Search fron people
 class SearchPeopleViewSet(viewsets.ModelViewSet):
+<<<<<<< HEAD
     '''
     performs the function of searching for objects by their "names"
     '''
+=======
+>>>>>>> f393bfd59599422952d99ac5209358fb674fd1f3
     queryset = People.objects.all()
     serializer_class = PeopleSerializer
     pagination_class = SearchPagination 
@@ -95,9 +110,12 @@ class SearchPeopleViewSet(viewsets.ModelViewSet):
 
 #Search from movies
 class SearchMoviesViewSet(viewsets.ModelViewSet):
+<<<<<<< HEAD
     '''
     performs the function of searching for objects by their "title"
     '''
+=======
+>>>>>>> f393bfd59599422952d99ac5209358fb674fd1f3
     queryset = Movies.objects.all()
     serializer_class = MovieSerializer
     pagination_class = SearchPagination 
@@ -111,17 +129,23 @@ class PeopleViewSet(generics.ListAPIView, mixins.CreateModelMixin,
                   # mixins.DestroyModelMixin,
                 mixins.ListModelMixin,
                 viewsets.GenericViewSet):
+<<<<<<< HEAD
     ''' 
     performs all necessary manipulations with the object and also adds 'people_url', 'people_scroll_url' to the response
     '''
+=======
+>>>>>>> f393bfd59599422952d99ac5209358fb674fd1f3
     queryset = People.objects.all()
     serializer_class = PeopleSerializer
     lookup_field = 'id'
     filter_backends = [filters.SearchFilter]
     search_fields = ['name']
     pagination_class = DataPagination
+<<<<<<< HEAD
 
     #adds people_url and people_scroll_url into Response from People
+=======
+>>>>>>> f393bfd59599422952d99ac5209358fb674fd1f3
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
@@ -137,17 +161,23 @@ class MoviesViewSet(generics.ListAPIView, mixins.CreateModelMixin,
                   # mixins.DestroyModelMixin,
                 mixins.ListModelMixin,
                 viewsets.GenericViewSet):
+<<<<<<< HEAD
     ''' 
     performs all necessary manipulations with the object and also adds 'people_url', 'people_scroll_url' to the response
     '''
+=======
+>>>>>>> f393bfd59599422952d99ac5209358fb674fd1f3
     queryset = Movies.objects.all()
     serializer_class = MovieSerializer
     lookup_field = 'id'
     pagination_class = DataPagination
     filter_backends = [filters.SearchFilter]
     search_fields = ['title']
+<<<<<<< HEAD
 
     #adds people_url and people_scroll_url into Response from Movies
+=======
+>>>>>>> f393bfd59599422952d99ac5209358fb674fd1f3
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
@@ -254,7 +284,11 @@ def logout_view(request):
 	logout(request)
 	return Response({'message': 'Logout!'})
 
+<<<<<<< HEAD
 # automatic addition of objects to the database (for basic mode)
+=======
+
+>>>>>>> f393bfd59599422952d99ac5209358fb674fd1f3
 @api_view(['GET'])
 def add_movies(request, pk=1):
     apiRequst = requests.get(f'https://api.themoviedb.org/3/movie/popular?api_key={key.api_key}&language=en-US&page={pk}')
@@ -271,7 +305,10 @@ def add_movies(request, pk=1):
              pass
     return Response(json_data)
 
+<<<<<<< HEAD
 # automatic addition of objects to the database (for basic mode)
+=======
+>>>>>>> f393bfd59599422952d99ac5209358fb674fd1f3
 @api_view(['GET'])
 def add_people(request, pk=1):
     apiRequst = requests.get(f'https://api.themoviedb.org/3/person/popular?api_key={key.api_key}&language=en-US&page={pk}')

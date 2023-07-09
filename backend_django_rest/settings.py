@@ -174,12 +174,9 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_AUTHENTICATION': {
-<<<<<<< HEAD
         'rest_framework.authentication.SessionAuthentication': {'csrf_cookie_httponly': True}},
     'TEST_REQUEST_DEFAULT_FORMAT': 'json'
-=======
-        'rest_framework.authentication.SessionAuthentication': {'csrf_cookie_httponly': True}}
->>>>>>> f393bfd59599422952d99ac5209358fb674fd1f3
+
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
